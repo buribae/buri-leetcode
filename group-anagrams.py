@@ -3,17 +3,17 @@ from typing import List
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        #         res = collections.defaultdict(list)
+        """
+        freq_list = [0] * 26
+        map = { freq_list: [] }
+        return map.values
+        """
 
-        #         for s in strs:
-        #             res[tuple(sorted(s))].append(s)
-
-        #         return res.values()
-
-        res = collections.defaultdict(list)
+        ans = collections.defaultdict(list)
         for s in strs:
-            count = [0] * 26
+            freqs = [0] * 26
             for c in s:
-                count[ord(c) - ord("a")] += 1
-            res[tuple(count)].append(s)
-        return res.values()
+                freqs[ord(c) - ord("a")] += 1
+            ans[tuple(freqs)] += [s]
+
+        return ans.values()
